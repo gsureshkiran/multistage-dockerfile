@@ -1,7 +1,6 @@
-FROM tomcat:9-jdk11-adoptopenjdk-hotspot As build
+FROM tomcat:9 As build
 WORKDIR /usr/local/tomcat/webapps
 
-FROM scratch
-COPY --from=build 
-COPY target/*.war /usr/local/tomcat/webapps/webapp.war
+FROM jdk11-adoptopenjdk-hotspot
+COPY --from=build target/*.war /usr/local/tomcat/webapps/webapp.war
 RUN chmod -R 755 /usr/local/tomcat/webapps/webapp.war
