@@ -1,4 +1,4 @@
-FROM tomcat:9 As build
+FROM tomcat:9 as build
 WORKDIR /usr/local/tomcat/webapps
 
 FROM openjdk:11
