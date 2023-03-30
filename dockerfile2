@@ -1,0 +1,8 @@
+FROM ubuntu as build
+WORKDIR /app
+COPY /target/*.jar /app
+
+
+FROM ubuntu
+COPY --from=build /app /app
+CMD ["java", "-jar", "/app.jar"]
